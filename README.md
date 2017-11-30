@@ -2,9 +2,9 @@
 # Predict IMDB movie rating
 
     by Xi Guo   
-    
     11/29/2017
 
+[My blog](https://fulltimevirus.wordpress.com)
 
 ===================================================================================
 # Summary:
@@ -15,43 +15,34 @@ To predict the IMDB ratings, we first extracted some features from movie posters
 
 The final model has an mean squared error (MSE) of 0.7.
 
-
-
-===================================================================================
-# STEP 2: 
-
-Load 5000+ movie titles from the JSON file 'movie_budget.json'
-
-Then search those titles from IMDB website to get the real IMDB movie links
-
-It will generate a JSON file 'fetch_imdb_url.json' containing movie-link pairs
-
-$ scrapy crawl fetch_imdb_url -o fetch_imdb_url.json
-
+The results of the prediction is in **ridge_40_feature_result.csv**
 
 ===================================================================================
-# STEP 3: 
+# 1-Visulization-EDA: 
 
-Scrape 5000+ IMDB movie information
-
-This step will load the JSON file 'fetch_imdb_url.json', go into each movie page, and grab data
-
-This step will generate a JSON file 'imdb_output.json' (20M) containing detailed info of 5000+ movies
-
-It will also download all available posters for all movies.
-
-A total of 4907 posters can be downloaded (998MB). Note that I am not sure if I can upload all those posters into github,
-so I only uploaded a few. You can see from my code how to use scrapy to grab them all. 
-
-$ scrapy crawl imdb -o imdb_output.json
-
+[Click here to see a wrapped ipynb version](http://nbviewer.jupyter.org/github/lilsummer/imdb-movie-EDA/blob/master/1-visualization-EDA.ipynb)
 
 ===================================================================================
-# STEP 4: 
+# 2-model-tensorflow-improve-add-feature: 
 
-Perform face recognition to count face numbers from all posters
+* Training and testing data were split in 8:2 ratio. Cross validation were used internally in search of the best number of features. 
 
-This step will save result into JSON file 'image_and_facenumber_pair_list.json'
+* We used regression model on tensorflow to predict the ratings. The best model is the ridge regression model with 40 features. In this case, deep learning might not be necessary since the data set is small. 
 
-$ python detect_faces_from_posters.py
+The feature extraction step is in **3-extract-feature-poster.ipynb**
 
+[Click here to see a wrapped ipynb version](http://nbviewer.jupyter.org/github/lilsummer/imdb-movie-EDA/blob/master/2-model-tensorflow-improve-add-feature.ipynb#tag4)
+
+===================================================================================
+# 3-Extract-features-poster: 
+
+* This illustrates the steps to extract major colors from movie posters by using kmeans clustering.
+
+[Click here to see a wrapped ipynb version](http://nbviewer.jupyter.org/github/lilsummer/imdb-movie-EDA/blob/master/3-extract-feature-poster.ipynb)
+
+===================================================================================
+# 4-added-feature
+
+* A small analysis on the extracted RGB features.
+
+[Click here to see a wrapped ipynb version](http://nbviewer.jupyter.org/github/lilsummer/imdb-movie-EDA/blob/master/4-added-feature.ipynb)
