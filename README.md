@@ -31,7 +31,7 @@ The results of the prediction is in **ridge_40_feature_result.csv**
 
 The feature extraction step is in **3-extract-feature-poster.ipynb**
 
-[Click here to see a wrapped ipynb version](http://nbviewer.jupyter.org/github/lilsummer/imdb-movie-EDA/blob/master/2-model-tensorflow-improve-add-feature.ipynb#tag4)
+[Click here to see a wrapped ipynb version](https://nbviewer.jupyter.org/github/lilsummer/imdb-movie-EDA/blob/master/2-model-tensorflow-improve-feature.ipynb)
 
 ===================================================================================
 # 3-Extract-features-poster: 
